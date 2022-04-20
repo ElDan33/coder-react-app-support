@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { ThemeContext } from '../../context/ThemeContext';
 import ItemListContainer from '../items/ItemListContainer'
 
 const ProductsContainer = () => {
+
+  const {darkMode} = useContext(ThemeContext);
+
   return (
-    <div className="App-header">
+    <div className={darkMode ? "App-header-dark": "App-header"}>
       <ItemListContainer/>
     </div>
   )

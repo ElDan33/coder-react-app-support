@@ -1,38 +1,31 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon, faSun} from '@fortawesome/free-solid-svg-icons'
+import {ThemeContext } from '../context/ThemeContext';
 
 
-const ModeToggle = () => {
+const ThemeToggle = () => {
+
+    const {darkMode, toggleDarkMode} = useContext(ThemeContext);
     
-    const appHeader = document.querySelector(".App-header");
-    const label = document.querySelector(".label");
-    const ball = document.querySelector(".ball");
-
-    const modeHandler = ()=>{
-        appHeader.classList.toggle("App-header-dark");
-        label.classList.toggle("label-dark");
-        ball.classList.toggle("ball-dark");
-    }
-
     return (
         <div>
                 <input 
-                    onClick={modeHandler} 
+                    onClick={toggleDarkMode} 
                     type="checkbox" 
                     className="checkbox"
                     id="checkbox"
                 />
                 <label 
                     htmlFor="checkbox" 
-                    className="label"
+                    className={darkMode ? "label-dark" : "label"}
                 >
                     <FontAwesomeIcon icon={faMoon} />
                     <FontAwesomeIcon icon={faSun} />
-                    <div className="ball"/>
+                    <div className={darkMode ? "ball-dark" : "ball"}/>
                 </label>
         </div>
     )
 }
 
-export default ModeToggle
+export default ThemeToggle

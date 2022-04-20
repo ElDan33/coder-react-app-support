@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import customFetch from '../../utils/customFetch';
 import ItemList from './ItemList';
 import productsList from '../../utils/productsList'
 import { useParams } from 'react-router-dom';
 import ProductsByCategoriesContainer from '../categories/ProductsByCategoriesContainer';
+import { ThemeContext } from '../../context/ThemeContext';
 
 
 
 const ItemListContainer = () => {
 
+    const {darkMode} = useContext(ThemeContext);
     const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(true);
     const {productCategory} = useParams();
@@ -38,10 +40,10 @@ const ItemListContainer = () => {
     },[items, productCategory,productName, productFiltered]);
 
     return (
-        <div className="App-header">
+        <div className={darkMode ? "App-header-dark w-full h-full items-center justify-center": "App-header w-full h-full items-center justify-center"}>
             {
                 loading
-                ? (<div className="flex flex-col items-center">
+                ? (<div className="flex flex-col items-center justify-center w-screen h-screen">
                         <h1 className="mb-4 animate-ping text-white text-shadow-h1">
                             Loading...
                         </h1>
@@ -55,7 +57,7 @@ const ItemListContainer = () => {
                 :(
                     
                 <div className="flex justify-around flex-wrap w-screen">
-                    <h1 className="mt-4 font-bold text-3xl text-center absolute text-gray-600">{productCategory || "Products"}</h1>
+                    <h1 className={darkMode ? "mt-4 font-bold text-3xl text-center absolute text-white" :"mt-4 font-bold text-3xl text-center absolute text-gray-600"}>{productCategory || "Products"}</h1>
                     <div className="mt-24">
                         {(productCategory && <ProductsByCategoriesContainer />)||(<ItemList items={items} productName={productName} productFiltered={productFiltered} loading={loading}/>)}
                     </div>

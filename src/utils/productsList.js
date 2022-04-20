@@ -190,7 +190,7 @@ const productsList = [
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adispiscing elit. Lorem ipsum dolor sit amet, consectetur adispiscing elit."    },
     {
         id: 21,
-        category: "Miscellaneous",
+        category: "Others",
         product: "Caramel Cookies",
         price: 350.30,
         presentation: ["12 units"],
@@ -199,7 +199,7 @@ const productsList = [
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adispiscing elit. Lorem ipsum dolor sit amet, consectetur adispiscing elit."    },
     {
         id: 22,
-        category: "Miscellaneous",
+        category: "Others",
         product: "Cereal Bars",
         price: 81.50,
         presentation: ["100g"],
@@ -208,7 +208,7 @@ const productsList = [
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adispiscing elit. Lorem ipsum dolor sit amet, consectetur adispiscing elit."    },
     {
         id: 23,
-        category: "Miscellaneous",
+        category: "Others",
         product: "Fit Cookies",
         price: 85.20,
         presentation: ["250g"],
@@ -217,7 +217,7 @@ const productsList = [
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adispiscing elit. Lorem ipsum dolor sit amet, consectetur adispiscing elit."    },
     {
         id: 24,
-        category: "Miscellaneous",
+        category: "Others",
         product: "Muffins",
         price: 53.80,
         presentation: ["100g"],
@@ -226,7 +226,7 @@ const productsList = [
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adispiscing elit. Lorem ipsum dolor sit amet, consectetur adispiscing elit."    },
     {
         id: 25,
-        category: "Miscellaneous",
+        category: "Others",
         product: "Sponge Puddings",
         price: 410.20,
         presentation: ["500g"],
@@ -237,5 +237,5 @@ const productsList = [
     
 ]
 
-export const categories = ["Flours", "Grain", "Miscellaneous", "Nuts", "Seeds"];
+export const categories = ["Flours", "Grain", "Others", "Nuts", "Seeds"];
 export default productsList

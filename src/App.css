@@ -4,19 +4,17 @@
 
 .App-header {
   background-color: rgb(253, 253, 236);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: black;
+  font-family: monospace;
 }
 
 .App-header-dark {
   background-color: #282c34;
   color: white;
   text-shadow: 0 0 3px rgba(0, 0, 0, .8), 0 0 5px rgba(0, 0, 0, .9);
+  font-size: calc(10px + 2vmin);
+  font-family: monospace;
 }
 
 .App-link {
@@ -30,7 +28,7 @@
   cursor: pointer;
 }
 
-/****ModeToggle****/
+/****ThemeToggle****/
 
 .checkbox {
   opacity: 0;
@@ -54,15 +52,25 @@
 }
 
 .label-dark{
+  width: 50px;
+  height: 20px;
   background-image: url("https://acegif.com/wp-content/gifs/starfall-gif-46.gif");
   background-size:contain;
+  display: flex;
+  border-radius:50px;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 20px;
+  padding: 5px;
+  position: relative;
+  transform: scale(1.5);
 }
 
 .ball {
   width: 25px;
   height: 20px;
   background-image: url("https://wallpapercave.com/uwp/uwp653101.gif");
-  background-size:cover;
+  background-size:contain;
   position: absolute;
   top: 0px;
   right: 2px;
@@ -72,13 +80,25 @@
 }
 
 .ball-dark{
+  width: 25px;
+  height: 20px;
   background-image: url("https://acegif.com/wp-content/gifs/starfall-gif-46.gif");
-  background-size:cover;
+  background-size:contain;
+  position: absolute;
+  top: 0px;
+  right: 2px;
+  left: 1px;
+  border-radius: 50%;
+  transition: transform 0.2s linear;
 }
 
 
 /*  target the elemenent after the label*/
 .checkbox:checked + .label .ball{
+  transform: translateX(24px);
+}
+
+.checkbox:checked + .label-dark .ball-dark{
   transform: translateX(24px);
 }
 

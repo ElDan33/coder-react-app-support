@@ -50,20 +50,20 @@ const CategoriesDropDown = ({classNames}) => {
                           <Menu.Item>
                             {({ active }) => (
                               <Link
-                                to={`/Categories/${categories[2]}`}
+                                to={`/Categories/${categories[3]}`}
                                 className={classNames(active ? 'bg-green-300' : 'bg-yellow-50', 'block px-4 py-2 text-sm text-gray-700')}
                               >
-                                Miscellaneous
+                                Nuts
                               </Link>
                             )}
                           </Menu.Item>
                           <Menu.Item>
                             {({ active }) => (
                               <Link
-                                to={`/Categories/${categories[3]}`}
+                                to={`/Categories/${categories[2]}`}
                                 className={classNames(active ? 'bg-green-300' : 'bg-yellow-50', 'block px-4 py-2 text-sm text-gray-700')}
                               >
-                                Nuts
+                                Others
                               </Link>
                             )}
                           </Menu.Item>

@@ -2,11 +2,11 @@ import React from "react";
 import { Fragment } from 'react';
 import { Disclosure } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
-import ModeToggle from "./ModeToggle";
 import CartWidget from "./CartWidget";
 import { Link } from "react-router-dom";
 import CategoriesDropDown from "./CategoriesDropDown";
 import ProductSearch from "./ProductSearch";
+import ThemeToggle from "./ThemeToggle";
 
 
 
@@ -91,7 +91,7 @@ export default function NavBar() {
                   <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                   
                     {/* Light Mode and Dark Mode Toggle */}
-                    <ModeToggle/>
+                    <ThemeToggle />
 
                     {/* Cart dropdown */}
                     <CartWidget classNames={classNames}/>

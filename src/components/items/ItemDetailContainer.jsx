@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
+import { ThemeContext } from '../../context/ThemeContext';
 import customFetch from '../../utils/customFetch';
 import productsList from '../../utils/productsList';
 import ItemDetail from './ItemDetail';
 
 const ItemDetailContainer = () => {
 
+    const {darkMode} = useContext(ThemeContext);
     const [item, setItem] = useState({});
     const [loading, setLoading] = useState(true);
     const {productId} = useParams();
@@ -21,10 +23,10 @@ const ItemDetailContainer = () => {
     },[productId]);
 
     return (
-        <div className="App-header">
+        <div className={darkMode ? "App-header-dark w-full h-full items-center justify-center" : "App-header w-full h-full items-center justify-center"}>
             {
                 loading 
-                ? (<div className="flex flex-col items-center">
+                ? (<div className="flex flex-col items-center justify-center w-screen h-screen">
                         <h1 className="mb-4 animate-ping text-white text-shadow-h1">
                             Loading product...
                         </h1>
