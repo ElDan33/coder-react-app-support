@@ -58,7 +58,7 @@ const ItemListContainer = () => {
                     
                 <div className="flex justify-around flex-wrap w-screen">
                     <h1 className={darkMode ? "mt-4 font-bold text-3xl text-center absolute text-white" :"mt-4 font-bold text-3xl text-center absolute text-gray-600"}>{productCategory || "Products"}</h1>
-                    <div className="mt-24">
+                    <div className="mt-20 mb-12">
                         {(productCategory && <ProductsByCategoriesContainer />)||(<ItemList items={items} productName={productName} productFiltered={productFiltered} loading={loading}/>)}
                     </div>
                 </div>

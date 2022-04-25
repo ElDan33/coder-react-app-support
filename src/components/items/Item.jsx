@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Item = ({id, category, product, image}) => {
 
     return (
-        <div className="animate__animated animate__flipInX opacity-90 hover:opacity-100 hover:border-green-300 hover:border-6 flex flex-col justify-center items-center mt-8  w-96 bg-transparent border-solid border-4 border-gray-200 rounded">
+        <div className="animate__animated animate__flipInX opacity-90 hover:opacity-100 hover:border-green-300 hover:border-6 flex flex-col justify-center mx-4  items-center mt-8  w-96 bg-transparent border-solid border-4 border-gray-200 rounded">
             <h4 className="bg-orange-200 w-full text-center text-white text-shadow-h1">{product}</h4>
             <div className="w-full h-80">
                 <img className="box-border w-full h-80" src={image} alt={product} />

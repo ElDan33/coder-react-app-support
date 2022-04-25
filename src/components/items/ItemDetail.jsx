@@ -22,7 +22,7 @@ const ItemDetail = ({item}) => {
     let stockToString;
 
     const history = useNavigate();
-    const {addToCart, onItemPresentationChange} = useContext(CartContext);
+    const {addToCart, onItemPresentationChange, itemPresentation} = useContext(CartContext);
     
     const countIncrease = () => {
         if(count < (stockToNumber*1000) && item.product !== "Caramel Cookies"){
@@ -52,7 +52,7 @@ const ItemDetail = ({item}) => {
             setCountStock(stockToString);
             setCount(0);
         }
-        addToCart({...item, count});
+        addToCart({...item, count, itemPresentation});
         setContinueCheckout(true);
     }
 
@@ -149,13 +149,13 @@ const ItemDetail = ({item}) => {
                             ?<div className="animate__animated animate__bounceIn flex-col  text-center w-full border border-2 rounded-b-3xl bg-amber-50 p-4">
                                             <h3 className="text-green-400 mb-4">Products added to the Cart!</h3>
                                             <div className="">
-                                                <div className="relative flex justify-center  text-gray-400 hover:text-green-400">
+                                                <div className="relative flex justify-center text-gray-400 hover:text-green-400">
                                                     <CartWidget legend={"Go to the Check-Out"} />
                                                 </div>
                                                 <div className="relative flex justify-center">
                                                     <button 
                                                         onClick={()=>{setContinueCheckout(false); setIsAdd(false)}} 
-                                                        className="bg-gray-800 p-4 flex items-center rounded-full hover:bg-gray-700 text-gray-400 hover:text-green-400"
+                                                        className="bg-gray-800 p-4 mt-2 flex items-center rounded-full hover:bg-gray-700 text-gray-400 hover:text-green-400"
                                                     >
                                                         <EmojiHappyIcon className="mr-2 w-8 h-8"/>
                                                         Continue shopping

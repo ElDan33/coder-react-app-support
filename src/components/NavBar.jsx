@@ -14,7 +14,7 @@ export default function NavBar() {
 
     const navigation = [
       { name: 'Products', href: '/', current: false },
-      { name: 'Contact Us', href: '/ContactUs', current: false },
+      { name: 'Contact', href: '/Contact', current: false },
     ]
 
 
@@ -23,12 +23,12 @@ export default function NavBar() {
     }
 
     return (
-        <Disclosure as="nav" className="bg-gray-800">
+        <Disclosure as="nav" className="bg-gray-800 w-full lg:w-screen">
           {({ open }) => (
             <>
-              <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+              <div className="max-w-8xl mx-auto px-2 sm:px-6 lg:px-8">
                 <div className="relative flex items-center justify-between h-16">
-                  <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                  <div className="absolute inset-y-0 left-0 flex items-center lg:hidden">
                     {/* Mobile menu button*/}
                     <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                       <span className="sr-only">Open main menu</span>
@@ -39,24 +39,23 @@ export default function NavBar() {
                       )}
                     </Disclosure.Button>
                   </div>
-                  <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-                    <div className="flex-shrink-0 flex items-center w-1/3">
+                  <div className="flex-1 flex items-center justify-center sm:items-stretch lg:justify-start">
+                    <div className="flex-shrink-0 flex items-center w-1/4">
                         <Link
                             to={`/`}
-                            className="block lg:hidden h-8 w-30 text-white text-lg cursor-pointer border-solid border-2 border-sky-500 rounded-md mr-2 bg-gray-700 text-shadow"
+                            className="hidden lg:block h-8 w-30 text-white text-lg cursor-pointer border-solid border-2 border-sky-500 rounded-md mr-2 bg-gray-700 text-shadow"
                         >
                             GreenShop
                         </Link>
                         <Link
                             to={`/`}
-                            className="hidden lg:block h-8 w-30 text-white text-lg cursor-pointer border-solid border-2 border-sky-500 rounded-md mr-80 bg-gray-700 text-shadow"
+                            className="block lg:hidden h-8 w-30 text-white text-lg cursor-pointer border-solid border-2 border-sky-500 rounded-md sm:ml-24 md:ml-28 bg-gray-700 text-shadow"
                         >
                             GreenShop
                         </Link>
                     </div>
-                    <div className="hidden sm:block sm:ml-0">
-                      <div className="flex space-x-4">
-                        
+                    <div className="hidden lg:block lg:ml-10">
+                      <div className="flex lg:space-x-4">
                         <Link
                               key={navigation[0].name}
                               to={`${navigation[0].href}`}
@@ -99,7 +98,7 @@ export default function NavBar() {
                 </div>
               </div>
 
-              <Disclosure.Panel className="sm:hidden">
+              <Disclosure.Panel className="lg:hidden">
                 <div className="px-2 pt-2 pb-3 space-y-1">
                     <Disclosure.Button
                       key={navigation[0].name}

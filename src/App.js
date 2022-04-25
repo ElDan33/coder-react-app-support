@@ -5,12 +5,12 @@ import {
   Route,
 } from "react-router-dom";
 import './App.css';
-import ContactUs from './components/pageSections/ContactUs';
+import Contact from './components/pageSections/Contact';
 import NavBar from './components/NavBar';
 import ItemDetailContainer from './components/items/ItemDetailContainer';
 import ItemListContainer from './components/items/ItemListContainer';
 import ProductsContainer from './components/pageSections/ProductsContainer';
-import CheckOut from './components/CheckOut';
+import Cart from './components/Cart';
 import CartContextProvider from './context/CartContext';
 import ThemeContextProvider from './context/ThemeContext';
 
@@ -31,8 +31,8 @@ function App() {
           <Router>
               <NavBar/>
               <Routes>
-                <Route exact path="/ContactUs" element={<ContactUs />}></Route>
-                <Route path="/CheckOut" element={<CheckOut />} />
+                <Route exact path="/Contact" element={<Contact />}></Route>
+                <Route path="/Cart" element={<Cart />} />
                 <Route exact path="/Categories/:productCategory" element={<ItemListContainer/>}></Route>
                 <Route exact path="/Search/:productName" element={<ItemListContainer/>}></Route>
                 <Route exact path="/Products/:productId" element={<ItemDetailContainer />}></Route>

@@ -11,19 +11,19 @@ const CartWidget = ({legend}) => {
 
     return (
       <>
-          <Link to="/CheckOut" onClick={()=>window.scrollTo(0,0)} 
-          className="relative flex justify-center focus:outline-none focus:ring-2 p-1 focus:ring-offset-2 p-1 focus:ring-offset-gray-800 focus:ring-white text-gray-400 hover:text-white" 
+          <Link to="/Cart" onClick={()=>window.scrollTo(0,0)} 
+          className={cartItems !== 0 ? "relative flex justify-center focus:border-2 focus:rounded-full text-gray-400 hover:text-white" : "invisible" } 
           role="button"
           >
             
             <div className="bg-gray-800 p-4 relative inline-flex items-center rounded-full hover:bg-gray-700 hover:text-green-400">
-            <ShoppingCartIcon className=" h-8 w-8" aria-hidden="true"/>
+              <ShoppingCartIcon className=" h-8 w-8" aria-hidden="true"/>
 
               {
                 legend
                 ? <p className="ml-2">{legend}</p>
-                : <span className="absolute bottom-10 left-12 h-4 w-4">
-                    <span className={cartItems !== 0 ? "animate-ping absolute inline-flex h-4 w-4 rounded-full bg-green-400 opacity-75":""}></span>
+                : <span className={cartItems !== 0 ? "absolute bottom-10 left-12 h-4 w-4" : "invisible"}>
+                    <span className="animate-ping absolute inline-flex h-4 w-4 rounded-full bg-green-400 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-4 w-4 bg-green-500 "></span>
                     <span className="absolute right-0 left-0 top-0.5 bottom-0 text-center text-white text-xs">{cartItems}</span>
                   </span>
