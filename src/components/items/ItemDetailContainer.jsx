@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { ThemeContext } from '../../context/ThemeContext';
-import customFetch from '../../utils/customFetch';
-import productsList from '../../utils/productsList';
+// import customFetch from '../../utils/customFetch';
+// import productsList from '../../utils/productsList';
 import ItemDetail from './ItemDetail';
+import {doc, getDoc, getFirestore} from 'firebase/firestore';
 
 const ItemDetailContainer = () => {
 
@@ -13,14 +14,23 @@ const ItemDetailContainer = () => {
     const {productId} = useParams();
 
 
+    // useEffect(()=>{
+    //     customFetch(2000, productsList[productId-1])
+    //     .then(result => setItem(result))
+    //     .catch(error => alert(error))
+    //     .finally(()=>{
+    //         setLoading(false);
+    //     })
+    // },[productId]);
+
     useEffect(()=>{
-        customFetch(2000, productsList[productId-1])
-        .then(result => setItem(result))
-        .catch(error => alert(error))
-        .finally(()=>{
+        const db = getFirestore();
+        const productRef = doc(db, "productsList", productId);
+        getDoc(productRef).then((res)=>{
+            setItem({id:res.id, ...res.data()});
             setLoading(false);
         })
-    },[productId]);
+    },[productId])
 
     return (
         <div className={darkMode ? "App-header-dark w-full h-full items-center justify-center" : "App-header w-full h-full items-center justify-center"}>

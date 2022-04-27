@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
-import customFetch from '../../utils/customFetch';
+// import customFetch from '../../utils/customFetch';
 import ItemList from './ItemList';
 import productsList from '../../utils/productsList'
 import { useParams } from 'react-router-dom';
 import ProductsByCategoriesContainer from '../categories/ProductsByCategoriesContainer';
 import { ThemeContext } from '../../context/ThemeContext';
+import {collection, getDocs, query, where,getFirestore} from 'firebase/firestore';
 
 
 
@@ -19,25 +20,43 @@ const ItemListContainer = () => {
     const productFiltered = productsList.filter(p => p.product.toLowerCase().includes(productName));
 
     useEffect(()=>{
-        productName
-        ?(
-            customFetch(2000, productFiltered)
-            .then(result => setItems(result))
-            .catch(error => alert(error))
-            .finally(()=>{
-                setLoading(false);
-            })
-        ) 
-        :(
-        customFetch(2000, productsList)
-        .then(result => setItems(result))
-        .then(productCategory && setLoading(false))
-        .catch(error => alert(error))
-        .finally(()=>{
+        const db = getFirestore();
+        let productsListRef;
+        if(!productCategory){
+            productsListRef = collection(db, "productsList");
+        }else if(productName){
+            productsListRef = query(collection(db, "productsList"), where("product", "==", productName))
+        }else{
+            productsListRef = query(collection(db, "productsList"), where("category", "==", productCategory));
+            setLoading(true);
+        }
+        getDocs(productsListRef).then((res)=>{
+            setItems(res.docs.map(item => ({id:item.id, ...item.data()})));
             setLoading(false);
-        }))
+        })
+    },[productCategory, productName]);
 
-    },[items, productCategory,productName, productFiltered]);
+
+    // useEffect(()=>{
+    //     productName
+    //     ?(
+    //         customFetch(2000, productFiltered)
+    //         .then(result => setItems(result))
+    //         .catch(error => alert(error))
+    //         .finally(()=>{
+    //             setLoading(false);
+    //         })
+    //     ) 
+    //     :(
+    //     customFetch(2000, productsList)
+    //     .then(result => setItems(result))
+    //     .then(productCategory && setLoading(false))
+    //     .catch(error => alert(error))
+    //     .finally(()=>{
+    //         setLoading(false);
+    //     }))
+
+    // },[items, productCategory,productName, productFiltered]);
 
     return (
         <div className={darkMode ? "App-header-dark w-full h-full items-center justify-center": "App-header w-full h-full items-center justify-center"}>

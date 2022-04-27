@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { ThemeContext } from '../../context/ThemeContext';
-import customFetch from '../../utils/customFetch';
-import productsList from '../../utils/productsList';
+// import customFetch from '../../utils/customFetch';
+// import productsList from '../../utils/productsList';
 import ProductsCategoriesList from './ProductsCategoriesList';
+import {collection, getDocs, query, where,getFirestore} from 'firebase/firestore';
+
 
 const ProductsByCategoriesContainer = () => {
     const {darkMode} = useContext(ThemeContext);
@@ -13,17 +15,29 @@ const ProductsByCategoriesContainer = () => {
     console.log(productCategory)
 
     
+    // useEffect(()=>{
+    //     customFetch(1000, productsList)
+    //     .then(result => setProductsByCategory(result.filter(p=> p.category === productCategory)))
+    //     .then(productCategory && setLoading(true))
+    //     .catch(error => alert(error))
+    //     .finally(()=>{
+    //         if(productCategory){
+    //             setLoading(false);
+    //         }
+    //     })
+    // }, [productCategory])
+
     useEffect(()=>{
-        customFetch(1000, productsList)
-        .then(result => setProductsByCategory(result.filter(p=> p.category === productCategory)))
-        .then(productCategory && setLoading(true))
-        .catch(error => alert(error))
-        .finally(()=>{
-            if(productCategory){
-                setLoading(false);
-            }
+        const db = getFirestore();
+        let productsListRef;
+        if(productCategory){
+            productsListRef = query(collection(db, "productsList"), where("category", "==", productCategory));
+        }
+        getDocs(productsListRef).then((res)=>{
+            setProductsByCategory(res.docs.map(item => ({id:item.id, ...item.data()})));
+            setLoading(false);
         })
-    }, [productCategory])
+    },[productCategory]);
     
     return (
         <div className={darkMode ? "App-header-dark w-full h-full items-center justify-center": "App-header w-full h-full items-center justify-center"}>
