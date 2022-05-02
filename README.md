@@ -8,3 +8,6 @@ También se utilizaron íconos de fontawesome, para lo cual también se instaló
 
 1- Tailwind CSS
 2- Fontawesome
+
+# Visualiza la app
+Conocé la app través del siguiente link: https://greenshop-app.web.app

@@ -9,6 +9,9 @@ import ItemCount from './ItemCount'
 
 const ItemDetail = ({item}) => {
 
+    const history = useNavigate();
+    const {addToCart, onItemPresentationChange, itemPresentation} = useContext(CartContext);
+    
     const {darkMode} = useContext(ThemeContext);
 
     const [totalPrice, setTotalPrice] = useState(0);
@@ -21,9 +24,6 @@ const ItemDetail = ({item}) => {
     let stockToNumber = Number(countStock.substring(0,2));
     let stockToString;
 
-    const history = useNavigate();
-    const {addToCart, onItemPresentationChange, itemPresentation} = useContext(CartContext);
-    
     const countIncrease = () => {
         if(count < (stockToNumber*1000) && item.product !== "Caramel Cookies"){
             setCount(count+1);
@@ -80,10 +80,12 @@ const ItemDetail = ({item}) => {
             setTotalPrice(item.price);
             setTotalQuantity(12);
         }
+        
     }
 
+
     return (
-        <div className="pt-6 pb-12">
+        <div className="pt-6 pb-12 lg:w-screen lg:h-screen">
             {isAdd ? <CustomModal totalQuantity={totalQuantity} count={count} item={item}/> : null}
             <button 
                 onClick={()=>{history(-1); window.scrollTo(0,0)}}  
