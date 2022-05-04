@@ -2,7 +2,7 @@ import React from 'react'
 import Item from './Item'
 
 
-const ItemList = ({items, productName, productFiltered, loading}) => {
+const ItemList = ({items, productName, productFiltered}) => {
 
     return (
         <>  

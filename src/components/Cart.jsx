@@ -93,7 +93,7 @@ const Cart = () => {
                         </div>
                         {cart.length === 0
                             ? <div className="w-full flex flex-col"><li className={darkMode ? "text-center font-bold text-3xl rounded-xl bg-gray-300 shadow-md shadow-white" : "text-center font-bold text-3xl rounded-xl bg-orange-200 shadow-md shadow-gray-400"}>THERE'S NO PRODUCTS IN THE CART</li> <button onClick={()=>{history("/")}} className="animate-bounce w-full pt-36 text-4xl text-center text-white text-shadow-h1"><FontAwesomeIcon className={darkMode ? "text-gray-400" : "text-black"} icon={faArrowLeftLong}/> GO BACK</button></div>
-                            : <li className={darkMode ? "text-center font-bold text-lg lg:text-3xl rounded-b-xl bg-white shadow-md shadow-gray-400" : "text-center font-bold text-lg lg:text-3xl rounded-b-xl bg-orange-200 shadow-md shadow-gray-400"}>TOTAL: $ {total}</li>
+                            : <li className={darkMode ? "text-center font-bold text-lg lg:text-3xl rounded-b-xl bg-white shadow-md shadow-gray-400" : "text-center font-bold text-lg lg:text-3xl rounded-b-xl bg-orange-200 shadow-md shadow-gray-400"}>TOTAL: $ {(total.toFixed(1))}</li>
                         }
                     </ul>
                     <div className={darkMode ? "flex flex-col shadow-md shadow-white items-center border-2 p-4 mt-4 rounded-xl w-full mx-auto h-full lg:w-1/4" : "flex flex-col bg-orange-200 shadow-md shadow-gray-400 items-center border-2 p-4 mt-4 rounded-xl mx-auto w-full h-full lg:w-1/4 "}>
@@ -102,7 +102,7 @@ const Cart = () => {
                         <div className="">
                             <div className="mb-8">
                                 <p><FontAwesomeIcon icon={faCircleHalfStroke} /> Items: {cartItems}</p>
-                                <p><FontAwesomeIcon icon={faCircleHalfStroke} /> Total: ${total}</p>
+                                <p><FontAwesomeIcon icon={faCircleHalfStroke} /> Total: ${(total.toFixed(1))}</p>
                             </div>
                             <div className="flex flex-col items-start">
                                 <button onClick={cart.length !== 0 ? clearCartHandler : null} className={darkMode ? "hover:bg-gray-600 p-2 rounded-xl" : "hover:bg-orange-50  p-2 rounded-xl"}>CLEAR CART <FontAwesomeIcon className="text-red-600" icon={faSquareXmark} /></button>

@@ -2,10 +2,15 @@ import React, { useContext } from 'react'
 import { ThemeContext } from '../../context/ThemeContext';
 
 
-const ItemCount = ({count, stockToNumber, countIncrease, countDecrease, addCartHandler, countStock}) => {
+const ItemCount = ({
+    count, 
+    stockToNumber, 
+    countIncrease, 
+    countDecrease, 
+    addCartHandler, 
+    countStock}) => {
 
     const {darkMode} = useContext(ThemeContext);
-
 
     return (
             <div className="flex-col text-center w-full border border-2 rounded-b-3xl bg-amber-50 p-4">

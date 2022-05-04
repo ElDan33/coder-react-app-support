@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import CategoriesDropDown from "./CategoriesDropDown";
 import ProductSearch from "./ProductSearch";
 import ThemeToggle from "./ThemeToggle";
+import GreenShopIcon from '../assets/GreenShopIcon.png'
 
 
 
@@ -23,7 +24,7 @@ export default function NavBar() {
     }
 
     return (
-        <Disclosure as="nav" className="bg-gray-800 w-full lg:w-screen">
+        <Disclosure as="nav" className="bg-gray-800 w-full lg:w-full">
           {({ open }) => (
             <>
               <div className="max-w-8xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -43,15 +44,21 @@ export default function NavBar() {
                     <div className="flex-shrink-0 flex items-center w-1/4">
                         <Link
                             to={`/`}
-                            className="hidden lg:block h-8 w-30 text-white text-lg cursor-pointer border-solid border-2 border-sky-500 rounded-md mr-2 bg-gray-700 text-shadow"
-                        >
-                            GreenShop
+                            className="hidden lg:block h-8 w-32 text-white text-lg cursor-pointer border-solid border-2 border-sky-500 rounded-md md:w-32 mr-2 bg-gray-700 text-shadow"
+                        >   
+                            <div className="flex px-1">
+                              <img src={GreenShopIcon} alt="" className="w-6 h-6 "/>
+                              <p>GreenShop</p>
+                            </div>
                         </Link>
                         <Link
                             to={`/`}
-                            className="block lg:hidden h-8 w-30 text-white text-lg cursor-pointer border-solid border-2 border-sky-500 rounded-md sm:ml-24 md:ml-28 bg-gray-700 text-shadow"
-                        >
-                            GreenShop
+                            className="block lg:hidden h-8 w-32 min-w-fit text-white text-lg cursor-pointer border-solid border-2 border-sky-500 rounded-md md:pr-8 md:pl-2 sm:pr-8 sm:pl-2 sm:ml-24 md:ml-28 bg-gray-700 text-shadow"
+                        >   
+                            <div className="flex px-1">
+                              <img src={GreenShopIcon} alt="" className="w-6 h-6 "/>
+                              <p>GreenShop</p>
+                            </div>
                         </Link>
                     </div>
                     <div className="hidden lg:block lg:ml-10">
@@ -88,10 +95,8 @@ export default function NavBar() {
                     </div>
                   </div>
                   <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                  
                     {/* Light Mode and Dark Mode Toggle */}
                     <ThemeToggle />
-
                     {/* Cart dropdown */}
                     <CartWidget classNames={classNames}/>
                   </div>

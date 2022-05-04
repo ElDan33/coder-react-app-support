@@ -26,7 +26,6 @@ const CartContextProvider = ({children}) => {
         } else{
             setCart([...cart, {item}])
         }
-               
     }
 
     const removeFromCart = (id)=>{

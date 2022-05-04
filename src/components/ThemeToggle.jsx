@@ -9,7 +9,7 @@ const ThemeToggle = () => {
     const {darkMode, toggleDarkMode} = useContext(ThemeContext);
     
     return (
-        <div>
+        <div className="">
                 <input 
                     onClick={toggleDarkMode} 
                     type="checkbox" 

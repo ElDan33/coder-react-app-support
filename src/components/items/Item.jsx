@@ -12,7 +12,6 @@ const Item = ({id, category, product, image}) => {
             </div>
             <div className="flex flex-col w-full justify-center items-center">
                 <h4 className="bg-orange-200 w-full text-center text-white text-shadow-h1">Category: <span className="text-green-400 text-shadow-h1">{category}</span></h4>
-                
                 <Link to={`/Products/${id}`} onClick={()=>window.scrollTo(0,0)} className="w-full text-white text-shadow-h1 text-center">Details</Link>
             </div>
         </div>
