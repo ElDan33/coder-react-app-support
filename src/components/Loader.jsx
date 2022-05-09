@@ -2,7 +2,7 @@ import React from 'react'
 
 const Loader = ({text, contactLoading, orderLoading}) => {
     return (
-        <div className={contactLoading ? "flex flex-col items-center justify-center w-full h-full lg:w-full lg:h-full" : (orderLoading ? "flex flex-col items-center justify-center w-full h-full lg:w-full lg:h-full" : "flex flex-col items-center justify-center w-full h-full lg:w-screen lg:h-screen")}>
+        <div className={contactLoading ? "flex flex-col items-center justify-center w-full h-full lg:w-full lg:h-full" : (orderLoading ? "flex flex-col items-center justify-center w-full h-full lg:w-full lg:h-full" : "flex flex-col items-center justify-center w-screen h-screen lg:w-screen lg:h-screen")}>
             <h1 className={"mb-4 animate-bounce text-white text-shadow-h1"}>
                 {text}
             </h1>

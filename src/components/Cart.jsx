@@ -30,7 +30,7 @@ const Cart = () => {
 
     return (
         <>
-            <div className={darkMode ? "App-header-dark w-full lg:w-screen h-full lg:h-screen": "App-header w-full lg:w-screen h-full lg:h-screen"}>
+            <div className={darkMode ? "App-header-dark w-screen lg:w-screen h-full md:h-full lg:h-screen pb-4": "App-header w-screen lg:w-screen h-full md:h-full lg:h-screen pb-4"}>
                 {isFinish 
                     ? <FinishBuyForm isFinish={isFinish} setIsFinish={setIsFinish} setOrderTicket={setOrderTicket} setOrderCode={setOrderCode} /> 
                     : (
@@ -68,7 +68,7 @@ const Cart = () => {
                                                 className={darkMode ? (index % 2 === 0 ? "flex text-center bg-gray-800 " : "flex text-center bg-gray-600") : (index % 2 === 0 ? "flex text-center bg-orange-50" : "flex text-center bg-orange-100")}
                                             >   
                                                 <div className="flex flex-col w-1/6 ml-2 py-4">
-                                                    <img src={item?.item?.image} alt={item?.item?.product} className="rounded-md w-full"/>
+                                                    <img src={item?.item?.image[0]} alt={item?.item?.product} className="rounded-md w-full"/>
                                                     <span className="basis-1/5">{item?.item?.product}</span> 
                                                 </div>
                                                 <span className="basis-1/4 mt-12 ">{item?.item?.category}</span>

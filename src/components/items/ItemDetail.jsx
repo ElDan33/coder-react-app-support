@@ -1,5 +1,5 @@
 import { EmojiHappyIcon } from '@heroicons/react/outline';
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { CartContext } from '../../context/CartContext';
 import { ThemeContext } from '../../context/ThemeContext';
@@ -10,8 +10,7 @@ import ItemCount from './ItemCount'
 const ItemDetail = ({item}) => {
 
     const history = useNavigate();
-    const {addToCart, onItemPresentationChange, itemPresentation} = useContext(CartContext);
-    
+    const {cartItems, addToCart, onItemPresentationChange, itemPresentation} = useContext(CartContext);
     const {darkMode} = useContext(ThemeContext);
 
     const [totalPrice, setTotalPrice] = useState(0);
@@ -20,6 +19,8 @@ const ItemDetail = ({item}) => {
     const [countStock, setCountStock] = useState(item.stock);
     const [isAdd, setIsAdd] = useState(false);
     const [continueCheckout, setContinueCheckout] = useState(false);
+    const [imgSelected, setImgSelected] = useState(item.image[0]);
+
 
     let stockToNumber = Number(countStock.substring(0,2));
     let stockToString;
@@ -40,7 +41,6 @@ const ItemDetail = ({item}) => {
 
     const addCartHandler = () => {
         setIsAdd(true);
-        window.scrollTo(0,0)
         if(stockToNumber > 0){
             if(item.stock.includes("units")){
                 stockToString = ((stockToNumber - count).toString());
@@ -83,28 +83,50 @@ const ItemDetail = ({item}) => {
         
     }
 
+    const changeImgSelected = (imgUrl) => {
+        setImgSelected(imgUrl)
+    }
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        setImgSelected(item?.cover || item?.image?.[0])
+    }, [item]);
+
 
     return (
-        <div className="pt-6 pb-12 lg:w-screen lg:h-screen">
+        <div className="pt-6 pb-12 md:w-full md:h-full lg:w-full lg:h-full">
             {isAdd ? <CustomModal totalQuantity={totalQuantity} count={count} item={item}/> : null}
-            <button 
-                onClick={()=>{history(-1); window.scrollTo(0,0)}}  
-                className="animate-bounce mb-4 text-white text-shadow-h1 text-2xl font-bold ml-4"
-            >
-                ⇠ Go Back 
-            </button>
+            <h2 className="text-center mb-6">Product Detail</h2>
             <div className="flex flex-col items-center w-screen lg:flex lg:flex-row lg:items-start lg:justify-evenly lg:w-screen">
+                <div className={cartItems !== 0 ? "fixed z-10 mt-56 ml-72 visible md:mt-96 md:ml-96 lg:invisible" : "fixed z-50 mt-56 ml-72 invisible lg:invisible"}>
+                            <div className={"font-bold"} onClick={(e)=>e.target.className="hidden"}>x
+                                <CartWidget />
+                            </div>
+                        </div>
                 <div 
                     className={
                         darkMode 
                         ?  "animate__animated animate__slideInLeft bg-transparent w-5/6 lg:w-1/2 lg:h-2/3 border border-2-solid rounded-3xl" 
                         : "animate__animated animate__slideInLeft bg-orange-200  w-5/6 lg:w-1/2 lg:h-2/3 border border-2-solid rounded-3xl"}
                 >
-                    <img src={item.image} alt={item.product} className="w-full h-96 border border-2-solid rounded-t-3xl"></img>
+                    <img alt="imgSelected" src={imgSelected} className="w-full h-96 border border-2-solid rounded-t-3xl "></img>
+                    <div className="flex flex-row justify-between w-full">
+                        {item.image.map((el,index) => {
+                            return (
+                                <button 
+                                    key={index} 
+                                    onClick={() => { changeImgSelected(el) }} 
+                                    className="w-1/3 h-32 border-4 border-solid border-white hover:opacity-80 hover:border-green-400"
+                                >
+                                    <img alt={`itemImage${index}`} src={el} className="w-full h-full"></img>
+                                </button>
+                            )
+                        })}
+                    </div>
                     
                     <h3 className="mt-6 p-2 mb-6 underline text-center text-white text-shadow-h1 text-lg">Description</h3>
                     <p className="mb-12 p-2 text-center text-white text-shadow-h1 text-lg">{item.description}</p>
-
+                    
                 </div>
                 <div 
                     className={
@@ -170,7 +192,12 @@ const ItemDetail = ({item}) => {
                     </div>
                 </div>
             </div>
-            
+            <button 
+                onClick={()=>{history(-1); window.scrollTo(0,0)}}  
+                className="animate-bounce mt-6 text-white text-shadow-h1 text-2xl font-bold ml-4"
+            >
+                ⇠ Go Back 
+            </button>
         </div>
     )
 }

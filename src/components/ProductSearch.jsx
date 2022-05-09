@@ -16,7 +16,7 @@ const ProductSearch = () => {
                 console.log(search);
                 window.scrollTo(0, 0);
                 e.target.value = "";
-                navigate(`/Search/${search.toLowerCase()}`)
+                navigate(`/Search/${search}`)
             }else{
                 return;
             }

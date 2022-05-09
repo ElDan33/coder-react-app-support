@@ -12,12 +12,12 @@ const CartWidget = ({legend}) => {
     return (
       <>
           <Link to="/Cart" onClick={()=>window.scrollTo(0,0)} 
-          className={cartItems !== 0 ? "relative flex justify-center focus:border-2 focus:rounded-full text-gray-400 hover:text-white" : "invisible" } 
+          className={cartItems !== 0 ? "relative flex justify-center  focus:border-2 focus:rounded-full text-green-600 hover:text-white" : "invisible" } 
           role="button"
           >
             
             <div className="bg-gray-800 p-4 relative inline-flex items-center rounded-full hover:bg-gray-700 hover:text-green-400">
-              <ShoppingCartIcon className=" h-8 w-8" aria-hidden="true"/>
+              <ShoppingCartIcon className="h-8 w-8" aria-hidden="true"/>
 
               {
                 legend

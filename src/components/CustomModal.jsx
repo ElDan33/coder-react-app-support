@@ -1,3 +1,5 @@
+import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react'
 
 const CustomModal = ({
@@ -40,10 +42,10 @@ const CustomModal = ({
         showModal 
         ? (
             <div className="fixed top-0 right-0 left-0 bottom-0 z-50 bg-gray-800 opacity-90 lg:w-screen lg:h-screen lg:overscroll-auto">
-                <div className="animate__animated animate__fadeInDown block relative my-12 ml-24 w-2/3 h-68 p-2 bg-green-300 opacity-90 rounded-2xl font-mono lg:mx-auto lg:my-36 lg:w-1/3 ">
+                <div className="animate__animated animate__fadeInDown block relative my-36 mx-auto w-5/6 h-68 p-2 bg-green-300 opacity-90 rounded-2xl font-mono lg:mx-auto lg:my-36 lg:w-1/3 ">
                     <p className="px-6 py-2 text-md w-fit rounded-xl cursor-pointer text-gray-500 hover:text-white hover:bg-green-600 text-shadow" onClick={showModalHandler}>x</p>
                     {wannaClear || wannaRemove
-                        ? <h3 className="text-2xl mb-2 text-center text-white text-shadow-h1 ">🛑<span className=""> Confirm the action!! </span>🛑</h3>  
+                        ? (<h3 className="text-2xl mb-2 text-center text-white text-shadow-h1 "><FontAwesomeIcon className="text-red-600 h-8 w-8" icon={faTriangleExclamation}/><br/> Confirm the action!!</h3>)  
                         : <h3 className="text-3xl mb-2 text-center text-white text-shadow-h1 ">🎉<span className=""> Congratz!! </span>🎉</h3>}
                     <hr />
 

@@ -7,6 +7,7 @@ const CartContextProvider = ({children}) => {
     const [cart, setCart] = useState([]);
     const [cartItems, setCartItems] = useState(0);
     const [itemPresentation, setItemPresentation] = useState("");
+    const [presentationQuantity, setPresentationQuantity] = useState(0);
     const [pricePerPresentation, setPricePerPresentation] = useState();
     const [subTotal, setSubTotal] = useState();
     const [total, setTotal] = useState(0);
@@ -14,7 +15,18 @@ const CartContextProvider = ({children}) => {
     
     const onItemPresentationChange = (e) => {
         setItemPresentation(e.target.value);
-
+        if(itemPresentation === "100g"){
+            setPresentationQuantity(100);
+        }
+        else if(itemPresentation === "250g"){
+            setPresentationQuantity(250);
+        }
+        else if(itemPresentation === "500g"){
+            setPresentationQuantity(500);
+        }
+        else{
+            setPresentationQuantity(0);
+        }
     }
 
     const addToCart = (item)=>{
@@ -93,7 +105,9 @@ const CartContextProvider = ({children}) => {
                 value={{
                     cart, 
                     cartItems, 
-                    itemPresentation,  
+                    itemPresentation,
+                    presentationQuantity,
+                    setPresentationQuantity,  
                     onItemPresentationChange, 
                     pricePerPresentation, 
                     subTotal, 

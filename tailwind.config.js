@@ -5,6 +5,12 @@ module.exports = {
   ],
   theme: {
     extend: {
+      rotate: {
+        '135':'135deg',
+        '225':'225deg',
+        '270': '270deg',
+        '315':'315deg',
+      },
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
@@ -18,6 +24,7 @@ module.exports = {
       animation:{
         'bounce-short': 'bounce 3s ease-out infinite'
       },
+      
     },
   },
   plugins: [

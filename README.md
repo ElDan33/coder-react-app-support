@@ -13,7 +13,7 @@ Además se implementó **React-hook-form** :clipboard: para el manejo y validaci
 Finalmente, para simular la experiencia del lado del servidor, se hizo uso del firestore database de **Firebase** :fire:. 
 
 # :eyes: Demostración de la App :eyes:
-![image](https://i.pinimg.com/originals/0e/0a/4d/0e0a4dc4931d0572a9a2946f2ccd48c9.gif)
+![image](../coder-react-app-main/src/assets/GreenShop%20-%20Google%20Chrome%202022-05-09%2017-21-54.gif)
 
 # :books: Dependencias utilizadas :books:
 

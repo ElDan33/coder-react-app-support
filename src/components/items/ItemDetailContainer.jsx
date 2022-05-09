@@ -8,6 +8,7 @@ import Loader from '../Loader';
 const ItemDetailContainer = () => {
 
     const {darkMode} = useContext(ThemeContext);
+    
     const [item, setItem] = useState({});
     const [loading, setLoading] = useState(true);
     const {productId} = useParams();
