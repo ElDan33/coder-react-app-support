@@ -93,6 +93,7 @@ const Contact = () => {
                         <label className="text-center" htmlFor="">Query:</label>
                         <textarea className={errors?.query ? "p-4 rounded-xl h-52 text-black border-2 border-solid border-red-600" :"p-4 rounded-xl h-60 text-black"} {...register("query", {required:true, maxLength:250})} onChange={(e)=>setQuery(e.target.value)} placeholder="Your query..."  ></textarea>
                           {errors?.query?.type === "required" && <p className="text-red-500 text-sm">This field is required.</p>}
+                        <p>Max.Length: 250 characters.</p>
                       </div>
                       <input type="submit" value="Send" className={darkMode ? "w-full border rounded-xl shadow-sm shadow-white hover:bg-gray-600" : "w-full border rounded-xl shadow-sm shadow-white bg-orange-300 hover:bg-orange-100"}/>
                     </div>

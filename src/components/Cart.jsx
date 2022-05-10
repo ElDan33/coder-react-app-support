@@ -30,7 +30,7 @@ const Cart = () => {
 
     return (
         <>
-            <div className={darkMode ? "App-header-dark w-screen lg:w-screen h-full md:h-full lg:h-screen pb-4": "App-header w-screen lg:w-screen h-full md:h-full lg:h-screen pb-4"}>
+            <div className={darkMode ? "App-header-dark w-screen lg:w-screen h-full md:h-full lg:h-full pb-8": "App-header w-screen lg:w-screen h-full md:h-full lg:h-full pb-8"}>
                 {isFinish 
                     ? <FinishBuyForm isFinish={isFinish} setIsFinish={setIsFinish} setOrderTicket={setOrderTicket} setOrderCode={setOrderCode} /> 
                     : (
